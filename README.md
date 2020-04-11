@@ -42,6 +42,6 @@ Most of you must have used a messaging app like WhatsApp. In these apps, you can
  2.  Assuming Less than 1 minute means 'online' anf returning the same.
  3. Assuming user'device can be any part of the world. Client/app have to send the timeframe along with timezone. 
  4. Assuming this code logic/snippet is a part of program running on client/app side.  
- 5. The string must represent a valid date-time and is parsed using java.time.format.DateTimeFormatter#ISO_ZONED_DATE_TIME. it is format that extends the ISO-8601. E.g. '2011-12-03T10:15:30+01:00[Europe/Paris]'.
+ 5. The string must represent a valid date-time and is parsed using java.time.format.DateTimeFormatter#ISO_ZONED_DATE_TIME. it is format that extends the ISO-8601. E.g. '2020-04-12T19:15:30+05:30', '2020-04-11T19:15:30+01:00[Europe/Paris]' or '2020-04-10T19:15:30Z'.
  6. Can accept data as per Min and Max value defined by Java Data.Time class.
  7. Any data time provided in future will be consider as invalid. 
