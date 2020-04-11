@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.*;
 
-public class InputcommandParserTest {
+public class IncomingParserTest {
 
     @Test
     public void userProvidedCommandsParser() {
