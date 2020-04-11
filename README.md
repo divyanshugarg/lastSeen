@@ -51,8 +51,8 @@ Most of you must have used a messaging app like WhatsApp. In these apps, you can
 ! Last seen 1 hours ago.
 2020-04-11T13:10:30+01:00
 ! Last seen 9 minutes ago.
-2020-04-11T12:24:30+01:00
-! Last seen 56 minutes ago.
+2020-03-10T19:15:30Z
+! Last seen 1 months ago.
 2020-04-11T13:20:30+01:00
 ! online
 
