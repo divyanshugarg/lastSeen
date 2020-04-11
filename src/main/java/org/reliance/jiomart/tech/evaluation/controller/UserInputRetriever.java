@@ -1,22 +1,21 @@
 package org.reliance.jiomart.tech.evaluation.controller;
 
-import org.reliance.jiomart.tech.evaluation.services.LastSeenTimeCalculator;
+import org.reliance.jiomart.tech.evaluation.services.LastSeenTimeCalculatorService;
 import org.reliance.jiomart.tech.evaluation.util.IncomingParser;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.time.DateTimeException;
-import java.time.temporal.UnsupportedTemporalTypeException;
 
 public class UserInputRetriever {
 
     IncomingParser incomingParser;
-    LastSeenTimeCalculator lastSeenTimeCalculator;
+    LastSeenTimeCalculatorService lastSeenTimeCalculatorService;
 
     public UserInputRetriever() {
         incomingParser = new IncomingParser();
-        lastSeenTimeCalculator = new LastSeenTimeCalculator();
+        lastSeenTimeCalculatorService = new LastSeenTimeCalculatorService();
     }
 
     /*
@@ -40,7 +39,8 @@ public class UserInputRetriever {
                     } else {
                         // Pass the command to Parser class to interpret
                         if (incomingParser.validateUserProvidedCommand(inputString.trim())) {
-                            lastSeenTimeCalculator.setLastSeenTimeMessage(incomingParser.getInputInZonedDateTimeFormat(inputString.trim()));
+                            lastSeenTimeCalculatorService.setLastSeenReportedMessage(incomingParser.getInputInZonedDateTimeFormat(inputString.trim()));
+                            System.out.print(lastSeenTimeCalculatorService.getLastSeenReportedMessage());
                         } else {
                             // No action defined yet except logging the error.
                         }

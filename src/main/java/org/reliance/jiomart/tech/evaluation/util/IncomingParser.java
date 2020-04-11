@@ -1,6 +1,6 @@
 package org.reliance.jiomart.tech.evaluation.util;
 
-import org.reliance.jiomart.tech.evaluation.services.LastSeenTimeCalculator;
+import org.reliance.jiomart.tech.evaluation.services.LastSeenTimeCalculatorService;
 
 import java.time.Duration;
 import java.time.ZonedDateTime;
@@ -8,10 +8,10 @@ import java.time.format.DateTimeParseException;
 
 public class IncomingParser {
 
-    LastSeenTimeCalculator lastSeenTimeCalculator;
+    LastSeenTimeCalculatorService lastSeenTimeCalculatorService;
 
     public IncomingParser() {
-        lastSeenTimeCalculator = new LastSeenTimeCalculator();
+        lastSeenTimeCalculatorService = new LastSeenTimeCalculatorService();
     }
 
     /*
@@ -31,7 +31,10 @@ public class IncomingParser {
         }
     }
 
-
+    /**
+     * @param dataTimeInputProvided
+     * @return
+     */
     private boolean isInputInCorrectFormat(String dataTimeInputProvided) {
         try {
             ZonedDateTime.parse(dataTimeInputProvided);
@@ -43,12 +46,29 @@ public class IncomingParser {
         }
     }
 
+    /**
+     * Verify Is provided ZonedDateTime instance is a future data time or not
+     *
+     * @param userProvidedDatetime
+     * @return True if provided date represent a Future data time.
+     */
     private boolean isFutureTimeStampProvided(ZonedDateTime userProvidedDatetime) {
         ZonedDateTime currentDateTime = ZonedDateTime.now();
         Duration timeDifference = Duration.between(userProvidedDatetime, currentDateTime);
         return timeDifference.isNegative() || timeDifference.isZero();
     }
 
+    /**
+     * Obtains an instance of {@code ZonedDateTime} from a text string such as
+     * {@code 2007-12-03T10:15:30+01:00[Europe/Paris]}.
+     * <p>
+     * The string must represent a valid date-time and is parsed using
+     * {@link java.time.format.DateTimeFormatter#ISO_ZONED_DATE_TIME}.
+     *
+     * @param dataTimeInputProvided the text to parse such as "2007-12-03T10:15:30+01:00[Europe/Paris]", not null
+     * @return the parsed zoned date-time, not null
+     * @throws DateTimeParseException if the text cannot be parsed
+     */
     public ZonedDateTime getInputInZonedDateTimeFormat(String dataTimeInputProvided) {
         return ZonedDateTime.parse(dataTimeInputProvided);
     }
